@@ -2,6 +2,8 @@ package com.harrybro.basicmonoandflux;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscriber;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -24,6 +26,8 @@ public class MonoAndFluxTest {
     void fluxTest() {
         Flux<String> fluxStr = Flux.just("Hello", "Flux", "Good")
                 .concatWithValues("add1", "add2") // 추가로 값을 Flux에 넣는다.
+                .concatWith(Flux.error(new RuntimeException("Exception occurred.")))
+                .concatWithValues("add3") // 중간에 에러가 발생하면 그 다음 onNext()는 실행되지 않는다.
                 .log();
         fluxStr.subscribe(System.out::println);
     }
