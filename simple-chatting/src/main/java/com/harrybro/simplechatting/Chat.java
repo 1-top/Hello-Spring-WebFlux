@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Document("chat")
 public class Chat implements Serializable {
@@ -22,7 +22,7 @@ public class Chat implements Serializable {
 
     private String receiver;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private final LocalDateTime createdAt = LocalDateTime.now();
 
     @Builder
     public Chat(String message, String sender, String receiver) {
