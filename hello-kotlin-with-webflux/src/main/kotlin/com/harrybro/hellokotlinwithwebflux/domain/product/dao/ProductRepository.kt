@@ -7,5 +7,5 @@ import reactor.core.publisher.Flux
 
 @Repository
 interface ProductRepository: ReactiveMongoRepository<Product, String> {
-    fun findAllByPriceBetween(min: Double?, max: Double?): Flux<Product>
+    fun findAllByPriceBetween(min: Double, max: Double): Flux<Product>
 }
