@@ -11,7 +11,7 @@ interface ProductService {
     fun save(dto: ProductDto.SaveRequest): Mono<ProductDto.Response>
     fun findAll(): Flux<ProductDto.Response>
     fun findById(id: String): Mono<ProductDto.Response>
-    fun findAllByPriceBetween(min: Double? = 0.0, max: Double? = Double.MAX_VALUE): Flux<ProductDto.Response>
+    fun findAllByPriceBetween(min: Double, max: Double): Flux<ProductDto.Response>
 
     @Transactional
     fun update(id: String, dto: ProductDto.UpdateRequest): Mono<ProductDto.Response>
@@ -27,7 +27,7 @@ class ProductServiceImpl(private val productRepository: ProductRepository) : Pro
 
     override fun findById(id: String) = this.productRepository.findById(id).map { ProductDto.Response(it) }
 
-    override fun findAllByPriceBetween(min: Double?, max: Double?) =
+    override fun findAllByPriceBetween(min: Double, max: Double) =
         this.productRepository.findAllByPriceBetween(min, max).map { ProductDto.Response(it) }
 
     override fun update(id: String, dto: ProductDto.UpdateRequest) = this.productRepository.findById(id)
