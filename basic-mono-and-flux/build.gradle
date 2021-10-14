@@ -24,6 +24,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'com.truthbean.logger:logger-to-slf4j:0.4.0-RELEASE'
 }
 
 test {
