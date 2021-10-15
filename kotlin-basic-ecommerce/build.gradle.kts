@@ -24,8 +24,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
+    // https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync
+    implementation("org.mongodb:mongodb-driver-sync")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
     testImplementation("io.projectreactor:reactor-test")
 }
 
